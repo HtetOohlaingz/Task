@@ -1,0 +1,31 @@
+<odoo>
+    <data>
+        <record id="view_sale_order_quotation_view_search" model="ir.ui.view">
+            <field name="name">sale.order.quotation.view.search</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.sale_order_view_search_inherit_quotation"/>
+            <field name="arch" type="xml">
+                <xpath expr="filter[@name='sales']" position="after">
+                    
+                    <filter string="Today" name="filter_today" domain="[('create_date','&lt;=', context_today().strftime('%Y-%m-%d 23:59:59')), ('create_date','&gt;=', context_today().strftime('%Y-%m-%d 00:00:00'))]"/>
+                    <filter string="Yesterday" name="filter_yesterday" domain="[('create_date','&lt;=', (datetime.datetime.now() - datetime.timedelta(days=1)).strftime('%%Y-%%m-%%d 00:00:00')), ('create_date', '&gt;=', (datetime.datetime.now() - datetime.timedelta(days=1)).strftime('%%Y-%%m-%%d 23:59:59'))]"/>
+                    <filter string="Current Week" name="current_week" domain="[('create_date', '&lt;=', ((context_today() + relativedelta(weeks=0, weekday=-1)).strftime('%Y-%m-%d'))), ('create_date', '&gt;=', ((context_today()-relativedelta(weeks=1, weekday=0)).strftime('%Y-%m-%d')))]"/>
+                    <filter string="Previous Week" name="pervious_week" domain="[('create_date', '&lt;=', ((context_today() + relativedelta(weeks=-1, weekday=6)).strftime('%Y-%m-%d'))), ('create_date', '&gt;=', ((context_today()+relativedelta(weeks=-2, weekday=0)).strftime('%Y-%m-%d')))]"/>
+                    <filter string="Current Month" name="current_month" domain="[('create_date', '&lt;=', (context_today() + relativedelta(months=1)).strftime('%Y-%m-01')), ('create_date', '&gt;=',time.strftime('%Y-%m-01'))]"/>
+                    <filter string="Previous Month" name="previous_month" domain="[('create_date', '&lt;=',time.strftime('%Y-%m-01')), ('create_date', '&gt;=',(context_today() - relativedelta(months=1)).strftime('%Y-%m-01'))]"/>
+                    
+                </xpath>
+            </field>
+        </record>
+        <record id="sale.action_quotations_with_onboarding" model="ir.actions.act_window">
+            <field name="name">Sale Orders</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_mode">tree,form,kanban</field>
+            
+            <field name="context">{'search_default_filter_today': 1}</field>
+            
+            
+        </record>
+    </data>
+</odoo>

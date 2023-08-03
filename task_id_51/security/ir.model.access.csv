@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_task_id_51_task_id_51,task_id_51.filter_inherit,model_filter_inherit,base.group_user,1,1,1,1
