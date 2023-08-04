@@ -8,7 +8,7 @@
                 <xpath expr="filter[@name='sales']" position="after">
                     
                     <filter string="Today" name="filter_today" domain="[('create_date','&lt;=', context_today().strftime('%Y-%m-%d 23:59:59')), ('create_date','&gt;=', context_today().strftime('%Y-%m-%d 00:00:00'))]"/>
-                    <filter string="Yesterday" name="filter_yesterday" domain="[('create_date','&lt;=', (datetime.datetime.now() - datetime.timedelta(days=1)).strftime('%%Y-%%m-%%d 00:00:00')), ('create_date', '&gt;=', (datetime.datetime.now() - datetime.timedelta(days=1)).strftime('%%Y-%%m-%%d 23:59:59'))]"/>
+                    <filter string="Yesterday" name="filter_yesterday" domain="[('create_date','&lt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=1), datetime.time(23,59,59))), ('create_date','&gt;=', datetime.datetime.combine(context_today()-datetime.timedelta(days=1), datetime.time(0,0,0)))]"/>
                     <filter string="Current Week" name="current_week" domain="[('create_date', '&lt;=', ((context_today() + relativedelta(weeks=0, weekday=-1)).strftime('%Y-%m-%d'))), ('create_date', '&gt;=', ((context_today()-relativedelta(weeks=1, weekday=0)).strftime('%Y-%m-%d')))]"/>
                     <filter string="Previous Week" name="pervious_week" domain="[('create_date', '&lt;=', ((context_today() + relativedelta(weeks=-1, weekday=6)).strftime('%Y-%m-%d'))), ('create_date', '&gt;=', ((context_today()+relativedelta(weeks=-2, weekday=0)).strftime('%Y-%m-%d')))]"/>
                     <filter string="Current Month" name="current_month" domain="[('create_date', '&lt;=', (context_today() + relativedelta(months=1)).strftime('%Y-%m-01')), ('create_date', '&gt;=',time.strftime('%Y-%m-01'))]"/>
