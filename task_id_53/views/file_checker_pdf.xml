@@ -1,0 +1,26 @@
+<odoo>
+    <data>
+        <!-- View definition -->
+        <record id="file_checker_view" model="ir.ui.view">
+            <field name="name">File Checker</field>
+            <field name="model">file.checker</field>
+            <field name="arch" type="xml">
+                <form string="File Checker">
+                    <field name="file" filename="filename" />
+                    <field name="filename" invisible="1" />
+                </form>
+            </field>
+        </record>
+
+        <!-- Action definition -->
+        <record id="file_checker_action" model="ir.actions.act_window">
+            <field name="name">File Checker PDF</field>
+            <field name="res_model">file.checker</field>
+            <field name="view_mode">form,tree</field>
+        </record>
+
+        <!-- Menu item definition -->
+        <menuitem id="menu_file_checker" name="File Checker" action="file_checker_action"
+            parent="training_center.menu_training" />
+    </data>
+</odoo>
