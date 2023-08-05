@@ -1,35 +1,31 @@
-# -*- coding: utf-8 -*-
+# Copyright 2020 Ozono Multimedia - Iván Antón
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+
 {
-    'name': "task_id_52",
-
-    'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
-
-    'description': """
-        Long description of module's purpose
-    """,
-
-    'author': "My Company",
-    'website': "https://www.yourcompany.com",
-
-    # Categories can be used to filter modules in modules listing
-    # Check https://github.com/odoo/odoo/blob/16.0/odoo/addons/base/data/ir_module_category_data.xml
-    # for the full list
-    'category': 'Uncategorized',
-    'version': '0.1',
-
-    # any module necessary for this one to work correctly
-    'depends': ['base'],
-
-    # always loaded
-    'data': [
-        # 'security/ir.model.access.csv',
-        'views/views.xml',
-        'views/templates.xml',
+    "name": "account_reconciliation_widget",
+    "version": "15.0.1.1.2",
+    "category": "Accounting",
+    "license": "AGPL-3",
+    "summary": "Account reconciliation widget",
+    "author": "Odoo, Ozono Multimedia, Odoo Community Association (OCA)",
+    "website": "https://github.com/OCA/account-reconcile",
+    "depends": ["account"],
+    "data": [
+        "security/ir.model.access.csv",
+        "views/account_view.xml",
+        "views/account_journal_dashboard_view.xml",
     ],
-    # only loaded in demonstration mode
-    'demo': [
-        'demo/demo.xml',
-    ],
+    "assets": {
+        "web.assets_backend": [
+            "account_reconciliation_widget/static/src/scss/account_reconciliation.scss",
+            "account_reconciliation_widget/static/src/js/reconciliation/**/*",
+        ],
+        "web.qunit_suite_tests": [
+            "account_reconciliation_widget/static/tests/**/*",
+        ],
+        "web.assets_qweb": [
+            "account_reconciliation_widget/static/src/xml/account_reconciliation.xml",
+        ],
+    },
+    "installable": True,
 }
