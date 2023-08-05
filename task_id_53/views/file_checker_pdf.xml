@@ -20,7 +20,6 @@
         </record>
 
         <!-- Menu item definition -->
-        <menuitem id="menu_file_checker" name="File Checker" action="file_checker_action"
-            parent="training_center.menu_training" />
+        <menuitem id="menu_file_checker" name="File Checker" parent="sale.sale_order_menu" action="file_checker_action"  />
     </data>
 </odoo>
