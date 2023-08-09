@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Inherit Sale Pivot View -->
+    <record model="ir.ui.view" id="view_sale_report_pivot_inherit">
+        <field name="name">sale.report.pivot.inherit</field>
+        <field name="model">sale.report</field>
+        <field name="inherit_id" ref="sale.view_order_product_pivot"/>
+        <field name="arch" type="xml">
+            
+                <field name="price_un" type="col"/>
+            
+        </field>
+    </record>
+
+    <!-- Inherit Sale Graph View -->
+    <record model="ir.ui.view" id="view_sale_report_graph_inherit">
+        <field name="name">sale.report.graph.inherit</field>
+        <field name="model">sale.report</field>
+        <field name="inherit_id" ref="sale.view_order_product_graph"/>
+        <field name="arch" type="xml">
+            
+                <field name="price_un" type="row"/>
+            
+        </field>
+    </record>
+</odoo>
