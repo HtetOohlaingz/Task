@@ -9,8 +9,13 @@ class SaleOrder(models.Model):
             if line.product_id.type == 'product':
                 service_line = self.order_line.filtered(lambda l: l.product_id.type == 'service')
                 if service_line:
-                    if line.product_uom_qty <= 30:
-                        service_line.price_unit = 120000.0
+                    if line.product_uom_qty > 30:
+                        service_line.price_unit = 120000
                     else:
-                        pass
+                        line.product_uom_qty <= 30
+                        return 
+
+                        
+                            
+                        
                     
