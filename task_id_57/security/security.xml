@@ -1,0 +1,30 @@
+<odoo>
+    <data>
+        <!-- Define user groups -->
+        <record id="hr_group_specialist" model="res.groups">
+            <field name="name">Specialist</field>
+        </record>
+
+        <record model="ir.rule" id="rule_work_phone_specialist">
+            <field name="name">Work Phone Specialist</field>
+            <field name="model_id" ref="hr.model_hr_employee"/>
+            <field name="groups" eval="[(4, ref('hr_group_specialist'))]"/>
+            <field name="domain_force">[('id', 'in', user.employee_ids.ids)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+        </record>
+
+        <!-- Modify the hr.employee form view using XPath -->
+        <record model="ir.ui.view" id="view_hr_employee_form_inherited">
+            <field name="name">hr.employee.form.inherited</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <field name="work_phone" position="attributes">
+                    <attribute name="groups">task_id_57.hr_group_specialist</attribute>
+                </field>
+            </field>
+        </record>
+        
+    </data>
+</odoo>
