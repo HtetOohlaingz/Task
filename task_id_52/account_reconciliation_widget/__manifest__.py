@@ -13,6 +13,7 @@
     "data": [
         "security/ir.model.access.csv",
         "views/account_view.xml",
+        "views/account_bank_statement_view.xml",
         "views/account_journal_dashboard_view.xml",
     ],
     "assets": {
