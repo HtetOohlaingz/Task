@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_cus_ref" model="ir.ui.view">
+        <field name="name">cus.ref.res.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <field name="property_payment_term_id" position="after">
+                <field name="commission"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>
