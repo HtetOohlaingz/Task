@@ -1,0 +1,16 @@
+<odoo>
+    <template id="report_invoice_custom_template" inherit_id="account.report_invoice_document">
+        <xpath expr="//td[@class='text-end']//span[@t-field='line.quantity']" position="replace">
+            <span t-esc="int(line.quantity)"></span>
+        </xpath>
+
+        <xpath expr="//td[@class='text-end o_price_total']//span[@t-field='line.price_subtotal']" position="replace">
+            <span t-esc="'%.2f'% line.price_subtotal"/>
+        </xpath>
+
+        <xpath expr="//td//span[@t-field='line.price_unit']" position="replace">
+            <span t-esc="'%.2f'% line.price_unit"/>
+        </xpath>
+
+    </template>
+</odoo>
